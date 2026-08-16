@@ -81,7 +81,7 @@ class ReActAgent:
             self.history.append(f"Action: {action}")
             self.history.append(f"Observation: {observation}")
   
-            # # 打印历史记录 自我验证
+            # # 打印历史记录 自我验证 【调试】
             # print("="*40)
             # print("\n".join(self.history))
             # print("="*40)
