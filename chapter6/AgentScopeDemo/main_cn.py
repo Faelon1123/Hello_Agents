@@ -20,6 +20,7 @@ from agentscope.agent import ReActAgent
 from agentscope.model import DashScopeChatModel
 from agentscope.pipeline import MsgHub, sequential_pipeline, fanout_pipeline
 from agentscope.formatter import DashScopeMultiAgentFormatter
+from dashscope import close_shared_aio_session
 
 from prompt_cn import ChinesePrompts
 from game_roles import GameRoles
@@ -381,10 +382,16 @@ async def main():
         return
     
     print("🎮 欢迎来到三国狼人杀！")
-    
-    # 创建并运行游戏
-    game = ThreeKingdomsWerewolfGame()
-    await game.run_game()
+
+    try:
+        # 创建并运行游戏
+        game = ThreeKingdomsWerewolfGame()
+        await game.run_game()
+    finally:
+        # DashScope 会复用当前事件循环中的 aiohttp 会话。必须在
+        # asyncio.run() 关闭事件循环前释放，并给 SSL 连接一点排空时间。
+        await close_shared_aio_session()
+        await asyncio.sleep(0.25)
 
 
 if __name__ == "__main__":
