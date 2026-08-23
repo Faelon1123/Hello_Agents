@@ -6,7 +6,15 @@
 import asyncio
 import os
 import random
+import sys
 from typing import List, Dict, Optional
+from dotenv import load_dotenv
+
+load_dotenv()
+
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 from agentscope.agent import ReActAgent
 from agentscope.model import DashScopeChatModel

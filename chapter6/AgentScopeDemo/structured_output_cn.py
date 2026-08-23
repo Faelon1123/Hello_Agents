@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """三国狼人杀游戏的结构化输出模型"""
 from typing import Literal, Optional, List
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field   # 数据校验与序列化库
 from agentscope.agent import AgentBase
 
 

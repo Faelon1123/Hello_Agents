@@ -8,6 +8,8 @@ from collections import Counter
 from agentscope.agent import AgentBase
 from agentscope.message import Msg
 
+
+
 # 游戏常量
 MAX_GAME_ROUND = 10
 MAX_DISCUSSION_ROUND = 3
