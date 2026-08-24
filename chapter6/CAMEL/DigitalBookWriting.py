@@ -11,7 +11,7 @@ LLM_API_KEY = os.getenv("LLM_API_KEY")
 LLM_BASE_URL = os.getenv("LLM_BASE_URL")
 LLM_MODEL = os.getenv("LLM_MODEL")
 
-#创建模型,在这里以Qwen为例,调用的AIHubMix平台API(OpenAI 兼容接口)
+#创建模型,在这里以AIHubMix为例,调用的AIHubMix平台API(OpenAI 兼容接口)
 model = ModelFactory.create(
     model_platform=ModelPlatformType.OPENAI_COMPATIBLE_MODEL,
     model_type=LLM_MODEL,
