@@ -59,7 +59,7 @@ def understand_query_node(state: SearchState) -> SearchState:
 理解：[用户需求总结]
 搜索词：[最佳搜索关键词]"""
 
-    response = llm.invoke([SystemMessage(content=understand_prompt)])
+    response = llm.invoke([HumanMessage(content=understand_prompt)])
     
     # 提取搜索关键词
     response_text = response.content
@@ -141,7 +141,7 @@ def generate_answer_node(state: SearchState) -> SearchState:
 
 请提供一个有用的回答，并说明这是基于已有知识的回答。"""
         
-        response = llm.invoke([SystemMessage(content=fallback_prompt)])
+        response = llm.invoke([HumanMessage(content=fallback_prompt)])
         
         return {
             "final_answer": response.content,
@@ -164,7 +164,7 @@ def generate_answer_node(state: SearchState) -> SearchState:
 4. 回答要结构清晰、易于理解
 5. 如果搜索结果不够完整，请说明并提供补充建议"""
 
-    response = llm.invoke([SystemMessage(content=answer_prompt)])
+    response = llm.invoke([HumanMessage(content=answer_prompt)])
     
     return {
         "final_answer": response.content,
