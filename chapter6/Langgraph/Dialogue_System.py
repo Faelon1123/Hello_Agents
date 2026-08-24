@@ -20,8 +20,8 @@ from tavily import TavilyClient
 load_dotenv()
 
 # 定义状态结构
-class SearchState(TypedDict):
-    messages: Annotated[list, add_messages]
+class SearchState(TypedDict): # 在 LangGraph 中，默认的状态更新方式是直接覆盖（Overwrite）
+    messages: Annotated[list, add_messages] # 通过绑定 add_messages，确保LangGraph 能够在多轮对话或多次工具调用中保持对话历史自动追加，确保上下文不丢失
     user_query: str        # 用户查询
     search_query: str      # 优化后的搜索查询
     search_results: str    # Tavily搜索结果
